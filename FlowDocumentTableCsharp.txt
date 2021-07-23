@@ -1,0 +1,70 @@
+//Crear table desde codigo
+ScrollViewer scrv = new ScrollViewer();
+           
+            FlowDocument   flowDoc = new FlowDocument();
+
+            // Create the Table...
+            Table table1 = new Table();
+            // ...and add it to the FlowDocument Blocks collection.
+            flowDoc.Blocks.Add(table1);
+
+            // Set some global formatting properties for the table.
+            table1.CellSpacing = 10;
+            table1.Background = Brushes.White;
+
+            int numberOfColumns = 6;
+            for (int x = 0; x < numberOfColumns; x++)
+            {
+                table1.Columns.Add(new TableColumn());
+
+                // Set alternating background colors for the middle colums.
+                if (x % 2 == 0)
+                    table1.Columns[x].Background = Brushes.Beige;
+                else
+                    table1.Columns[x].Background = Brushes.LightSteelBlue;
+            }
+
+
+            // Create and add an empty TableRowGroup to hold the table's Rows.
+            table1.RowGroups.Add(new TableRowGroup());
+
+            // Add the first (title) row.
+            table1.RowGroups[0].Rows.Add(new TableRow());
+
+            // Alias the current working row for easy reference.
+            TableRow currentRow = table1.RowGroups[0].Rows[0];
+
+            // Global formatting for the title row.
+            currentRow.Background = Brushes.Silver;
+            currentRow.FontSize = 40;
+            currentRow.FontWeight = System.Windows.FontWeights.Bold;
+
+            // Add the header row with content,
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("2004 Sales Project"))));
+            // and set the row to span all 6 columns.
+            currentRow.Cells[0].ColumnSpan = 6;
+
+
+            // Add the second (header) row.
+            table1.RowGroups[0].Rows.Add(new TableRow());
+            currentRow = table1.RowGroups[0].Rows[1];
+
+            // Global formatting for the header row.
+            currentRow.FontSize = 18;
+            currentRow.FontWeight = FontWeights.Bold;
+
+            // Add cells with content to the second row.
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Product"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Quarter 1"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Quarter 2"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Quarter 3"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Quarter 4"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("TOTAL"))));
+
+
+            FlowDocumentReader fdr = new FlowDocumentReader();
+            fdr.Document = flowDoc;
+            scrv.Content = fdr;
+            scrv.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+            scrv.MaxHeight = 200;
+            //stackPanelPuntuacionJugador.Children.Add(scrv);

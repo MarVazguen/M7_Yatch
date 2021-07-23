@@ -1,0 +1,45 @@
+﻿<Window x:Class="M7_Yatch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:M7_Yatch" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Icon="Imagenes/gameIcon.jpg"
+        Title="Yatche" Height="450" Width="800" >
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="Imagenes/mainFoto.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="133*"/>
+            <RowDefinition Height="192*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Column="1">
+            <TextBlock Foreground="White" >Game of  Yatch</TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="1">
+            <StackPanel>
+                <TextBlock >Agregar Jugador</TextBlock>
+                <xctk:IntegerUpDown Background="Blue" Foreground="White"  x:Name="integerUpDownNjugadores"  Value="1"  Minimum="1" Increment="1"/>
+                <StackPanel Orientation="Horizontal"  >
+                    <Button MinWidth="50"  Background="DarkBlue" Foreground="White" Name="btnCrearUsuarios" Click="btnCrearUsuarios_Click">Generar</Button>
+                    <Button MinWidth="50" Background="DarkBlue" Foreground="White"  Name="btnQuitar" Click="btnQuitar_Click"> Quitar </Button>
+                    </StackPanel> 
+            </StackPanel>
+        </Viewbox>
+        <ScrollViewer Grid.Row="2" Grid.Column="1"  VerticalScrollBarVisibility="Auto" Margin="0,10,0,10" >
+            <!-- <Viewbox  MaxWidth="250" Stretch="Uniform" ></Viewbox>-->
+            <StackPanel  Name="stackPanelJugadores"   VerticalAlignment="Top" Orientation="Vertical"   HorizontalAlignment="Stretch" />
+        </ScrollViewer>
+        <Button Background="DarkBlue" Foreground="White" Grid.Column="1" Grid.Row="3" FontSize="25" Name="btnJugar" Click="btnJugar_Click">Jugar</Button>
+    </Grid>
+</Window>

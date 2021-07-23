@@ -1,0 +1,467 @@
+﻿<Window x:Class="M7_Yatch.wndJuego"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:M7_Yatch"
+        mc:Ignorable="d"
+             Icon="Imagenes/gameIcon.jpg"
+        Title="" Height="450" Width="800"
+         KeyDown="Window_KeyDown"  WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="460*"/>
+            <ColumnDefinition Width="124*"/>
+            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="65*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="249*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="42*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="Imagenes/juegoTable.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Viewbox   Grid.Column="1" Margin="0,10,0,2">
+            <StackPanel >
+                <Image  Source="Imagenes/iconPeople.PNG" Width="50" Height="50"/>
+                <TextBlock TextAlignment="Center" Foreground="White" Name="tbNomJugadorActual">Jugador</TextBlock>
+            </StackPanel>
+        </Viewbox>
+
+        <Viewbox Grid.Column="2"  Grid.Row="0" Grid.RowSpan="3"  Grid.ColumnSpan="2"  >
+            <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel Height="884" >
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="Imagenes/backMenu.jpg" Stretch="UniformToFill"/>
+                    </StackPanel.Background>
+                    <StackPanel Height="800"  Name="stackPanelPuntuacionJugador" Orientation="Horizontal" >
+                        <FlowDocumentReader Height="826"   Name="flowDocuemtResultat">
+                            <FlowDocument>
+                                <Table CellSpacing="0.29cm" Name="tableResultat">
+                                    <Table.Columns >
+                                        <TableColumn Width="*"/>
+                                        <TableColumn Width="*"/>
+                                    </Table.Columns>
+
+                                    <TableRowGroup>
+                                        <!-- Title row for the table. -->
+                                        <TableRow Background="SkyBlue">
+                                            <TableCell ColumnSpan="2" TextAlignment="Center">
+                                                <Paragraph FontSize="24pt" FontWeight="Bold">
+                                                    <Run Text="{StaticResource resultado}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <!-- Header row for the table. -->
+                                        <TableRow Background="DarkBlue" >
+                                            <TableCell>
+                                                <Paragraph FontSize="14pt" FontWeight="Bold" Foreground="White">
+                                                    <Run Text="{StaticResource seccioSuperior}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph FontSize="14pt" FontWeight="Bold" Foreground="White">
+                                                    <Run Text="{StaticResource puntuacion}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Margin="0,0,5,0" VerticalAlignment="Center" Text="{StaticResource uns}" Name="tbUnsResultat"></TextBlock>
+                                                        <Button Click="btnUns_Click" Name="btnUns" IsEnabled="True">
+                                                            <Image Source ="Imagenes/uno.png"    Width="20" Height="20"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph >
+                                                    <TextBlock Name="tbUnoTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Name="tbDosResultat" Margin="0,0,5,0" VerticalAlignment="Center" Text="{StaticResource dos}" />
+                                                        <Button x:Name="btmDos" Click="btmDos_Click">
+                                                            <Image Source ="Imagenes/dos.png"    Width="20" Height="20"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph >
+                                                    <TextBlock Name="tbDosTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock x:Name="tbTresResultat"  Margin="0,0,5,0" VerticalAlignment="Center" Text="{StaticResource Tres}"/>
+                                                        <Button x:Name="btnTres" Click="btnTres_Click">
+                                                            <Image Source ="Imagenes/tres.png"    Width="20" Height="20"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph >
+                                                    <TextBlock Name="tbTresTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock x:Name="tbQuatreResultat" Margin="0,0,5,0" VerticalAlignment="Center" Text="{StaticResource Quatre}"></TextBlock>
+                                                        <Button x:Name="btnCuatro" Click="btnCuatro_Click">
+                                                            <Image Source ="Imagenes/cuatro.png"    Width="20" Height="20"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph >
+                                                    <TextBlock Name="tbCuatroTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock x:Name="tbCincResultat" Margin="0,0,5,0" VerticalAlignment="Center" Text="{StaticResource Cincs}"></TextBlock>
+                                                        <Button x:Name="btnCinco" Click="btnCinco_Click">
+                                                            <Image Source ="Imagenes/cinco.png"    Width="20" Height="20"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph >
+                                                    <TextBlock Name="tbCincoTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Name="tbSisosResultat" Margin="0,0,5,0" VerticalAlignment="Center" Text="{StaticResource Sisos}"></TextBlock>
+                                                        <Button x:Name="btnSeis" Click="btnSeis_Click">
+                                                            <Image Source ="Imagenes/seis.png"    Width="20" Height="20"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph >
+                                                    <TextBlock Name="tbSeisTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="CadetBlue">
+                                            <TableCell>
+                                                <Paragraph>Subtotal</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <TextBlock Name="tbSubtotalSuperiorTablaJugador">0</TextBlock>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="CadetBlue">
+                                            <TableCell>
+                                                <Paragraph>Extra (si subtotal ≥ 63)</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbExtraSuperiorTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="CadetBlue">
+                                            <TableCell>
+                                                <Paragraph>Total superior</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbtotalSuperiorTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="DarkBlue" >
+                                            <TableCell>
+                                                <Paragraph FontSize="14pt" FontWeight="Bold" Foreground="White">
+                                                    <Run Text="{StaticResource seccioInferior}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph FontSize="14pt" FontWeight="Bold" Foreground="White" >
+                                                    <Run Text="{StaticResource puntuacion}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Button x:Name="btnQuatreIguals" Click="btnQuatreIguals_Click" Style="{StaticResource tablaButtonStyle}" Content="{StaticResource quatreIguals}"></Button>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbTresIgualsTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Button x:Name="btnFull" Click="btnFull_Click" Style="{StaticResource tablaButtonStyle}" Content="{StaticResource full}"></Button>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbFullTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Button x:Name="btnEcalaCurta" Click="btnEcalaCurta_Click" Style="{StaticResource tablaButtonStyle}" Content="{StaticResource escalaCurta}"></Button>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbEscalaCurtaTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Button x:Name="btnEscalaLlarga" Click="btnEscalaLlarga_Click" Style="{StaticResource tablaButtonStyle}" Content="{StaticResource escalaLlarga}"></Button>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbEscalaLlargaTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Button x:Name="btnYatch" Click="btnYatch_Click" Style="{StaticResource tablaButtonStyle}" Content="{StaticResource yatch}"></Button>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbYatchTablaJugador" >0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="LightBlue" >
+                                            <TableCell >
+                                                <Paragraph>
+                                                    <Button Style="{StaticResource tablaButtonStyle}" Padding="2"  x:Name="btnAtzar" Click="btnAtzar_Click" Content="{StaticResource Atzar}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbAtzarTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="CadetBlue">
+                                            <TableCell>
+                                                <Paragraph>Subtotal</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbSubtotalInferiorTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="CadetBlue">
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Run Text="{StaticResource Totalinferior}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Name="tbTotalInferiorTablaJugador">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Background="CornflowerBlue" >
+                                            <TableCell>
+                                                <Paragraph FontSize="16pt" FontWeight="Bold" Foreground="White">
+                                                    <Run Text="{StaticResource TotalGeneral}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph FontSize="14pt" FontWeight="Medium" Foreground="White" Name="tbTotalGeneral">0</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+
+                                        <TableRow>
+                                            <TableCell ColumnSpan="2">
+                                                <Paragraph FontSize="10pt" FontStyle="Italic"   Background="White">
+                                                    Mas info en
+                                                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Yacht_(dice_game)" Foreground="Red" RequestNavigate="Hyperlink_RequestNavigate">Wikipedia</Hyperlink> sobre las reglas de juego.
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                </Table>
+                            </FlowDocument>
+                        </FlowDocumentReader>
+                    </StackPanel>
+                    <TextBlock x:Name="tbInfoUsuario" FontSize="37" TextAlignment="Center" TextWrapping="Wrap" Foreground="Brown"  Background="LightGreen" Margin="20,0,20,0" Text="{StaticResource  strMsgInformativo}"></TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Viewbox>
+
+        <!-- Region de dardos -->
+        <Viewbox Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2"  VerticalAlignment="Center"  HorizontalAlignment="Center"  >
+            <StackPanel  Background="Green">
+                <StackPanel Orientation="Horizontal" Height="80" Margin="0,5,0,5"  HorizontalAlignment="Center">
+                    <Button x:Name="btnDadoUno" Click="btnDadoUno_Click" Margin="0,0,5,0" Padding="2" Style="{StaticResource sytleDadosMouse}">
+                        <Image Source ="Imagenes/uno.png" Name="imgDadoUno" />
+                    </Button>
+                    <Button  x:Name="btnDadoDos" Click="btnDadoDos_Click"  Margin="0,0,5,0" Padding="2" Style="{StaticResource sytleDadosMouse}">
+                        <Image x:Name="imgDadosDos" Source ="Imagenes/dos.png"/>
+                    </Button>
+                    <Button  x:Name="btnDadoTres" Click="btnDadoTres_Click"  Margin="0,0,5,0" Padding="2" Style="{StaticResource sytleDadosMouse}">
+                        <Image  x:Name="imgDadosTres" Source ="Imagenes/tres.png"/>
+                    </Button>
+                    <Button  x:Name="btnDadoCuatro" Click="btnDadoCuatro_Click"  Margin="0,0,5,0" Padding="2" Style="{StaticResource sytleDadosMouse}">
+                        <Image  x:Name="imgDadosCuatro" Source ="Imagenes/cuatro.png"/>
+                    </Button>
+                    <Button  x:Name="btnDadoCinco" Click="btnDadoCinco_Click" Padding="2" Style="{StaticResource sytleDadosMouse}">
+                        <Image  x:Name="imgDadosCinco" Source ="Imagenes/cinco.png"/>
+                    </Button>
+                </StackPanel>
+                <Viewbox>
+                    <Grid Background="DarkGreen">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <!--
+                        <DataGrid     SelectionMode="Extended" SelectionUnit="FullRow"  IsReadOnly="True" Name="dgJugadors"  MaxHeight="120"   ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                            <DataGrid.Background  >
+                                <ImageBrush ImageSource="Imagenes/backMenu.jpg" Opacity="0.5" Stretch="Fill" />
+                            </DataGrid.Background>
+                            <DataGrid.RowBackground  >
+                                <ImageBrush ImageSource="Imagenes/backMenu.jpg" Opacity="0.5" Stretch="Fill"  />
+                            </DataGrid.RowBackground>
+
+                            <DataGrid.Columns >
+                                <DataGridTextColumn Header="{StaticResource nombre}"  Width="140"  Binding="{Binding Path=NomJugador}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource TotalGeneral}"  Width="90" Binding="{Binding Path=TotalGeneral}" IsReadOnly="True" >
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style>
+                                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="{StaticResource uns}"  Width="50" Binding="{Binding Path=Uns}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource dos}"   Width="50" Binding="{Binding Path=Dos}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource Tres}"   Width="50" Binding="{Binding Path=Tres}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource Quatre}"   Width="50" Binding="{Binding Path=Cuatro}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource Cincs}"   Width="50" Binding="{Binding Path=Cinco}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource TotalSuperior}" Width="50" Binding="{Binding Path=TotalSuperior}" IsReadOnly="True" />
+
+                                <DataGridTextColumn Header="{StaticResource quatreIguals}" Width="50" Binding="{Binding Path=CuatroIguals}"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource full}" Width="50" Binding="{Binding Path=Full}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource escalaLlarga}" Width="50" Binding="{Binding Path=EscalaLlarga}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource escalaCurta}" Width="50" Binding="{Binding Path=EscalaCurta}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource yatch}" Width="50" Binding="{Binding Path=Yatch}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource Atzar}" Width="50" Binding="{Binding Path=Atzar}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="{StaticResource Totalinferior}" Width="100" Binding="{Binding Path=TotalInferior}" IsReadOnly="True" />
+                            </DataGrid.Columns> 
+                        </DataGrid>-->
+
+                        <Grid   Margin="0,5,0,17.5" Grid.Column="0" Name="gridColumnaCategoria">
+                            <!--Loaded="gridResultat_Loaded"-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                
+
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/> 
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160" />
+                            </Grid.ColumnDefinitions>
+                          
+                            <TextBlock Grid.Row="0"  Grid.Column="0" FontSize="15" HorizontalAlignment="Center" Foreground="White" Background="DarkBlue" Padding="20,0,20,0" >Categoria/Nombre</TextBlock>
+                            <TextBlock Grid.Row="1"   Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource uns}"></TextBlock>
+                            <TextBlock Grid.Row="2"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource dos}" ></TextBlock>
+                            <TextBlock Grid.Row="3"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource Tres}" ></TextBlock>
+                            <TextBlock Grid.Row="4"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource Quatre}"></TextBlock>
+                            <TextBlock Grid.Row="5"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource Cincs}"></TextBlock>
+                            <TextBlock Grid.Row="6"  Grid.Column="0"  Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource Sisos}"></TextBlock>
+                            <TextBlock Grid.Row="7"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource extra}"></TextBlock>
+                            <TextBlock Grid.Row="8"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource subtota}"></TextBlock>
+                            <TextBlock Grid.Row="9"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource TotalSuperior}"></TextBlock>
+                            <TextBlock Grid.Row="10"  Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource quatreIguals}"></TextBlock>
+                            <TextBlock Grid.Row="11" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource full}"></TextBlock>
+                            <TextBlock Grid.Row="12" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource escalaCurta}"></TextBlock>
+                            <TextBlock Grid.Row="13" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource escalaLlarga}"></TextBlock>
+                            <TextBlock Grid.Row="14" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource yatch}"></TextBlock>
+                            <TextBlock Grid.Row="15" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource Atzar}"></TextBlock>
+                            <TextBlock Grid.Row="16" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource extraInferior}"></TextBlock>
+                            <TextBlock Grid.Row="17" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource subtota}"></TextBlock>
+                            <TextBlock Grid.Row="18" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Text="{StaticResource Totalinferior}"></TextBlock>
+                            <TextBlock Grid.Row="19" Grid.Column="0" Style="{StaticResource  tablaPuntuacion }" Background="DarkCyan" Padding="40,0,40,0" Text="{StaticResource TotalGeneral}"></TextBlock>
+                        </Grid>
+
+
+                        <ScrollViewer Margin="5,5,0,0" Grid.Column="1" CanContentScroll="True"  Width="240"  HorizontalScrollBarVisibility="Visible"  VerticalScrollBarVisibility="Hidden">
+                            <Grid Grid.Column="1" Grid.Row="0" x:Name="gridResultat" ShowGridLines="True" Background="DarkBlue">
+
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </Viewbox>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.Column="6">
+            <StackPanel>
+                <TextBlock x:Name="tbNumJugada"  Foreground="Beige" Background="Brown"  HorizontalAlignment="Center">0</TextBlock>
+                <TextBlock Margin="2,0,0,0" FontSize="2.4" Foreground="White" Padding="1" Text="{StaticResource numJugada}"></TextBlock>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox >
+            <StackPanel>
+                <TextBlock  Foreground="Beige" Background="Red"  HorizontalAlignment="Center" Name="tbNumPartida">0</TextBlock>
+                <TextBlock Text="{StaticResource numPartida}" Margin="1.4,0,0,0" FontSize="2.4" Foreground="White"></TextBlock>
+            </StackPanel>
+        </Viewbox>
+
+        <Viewbox Grid.Column="1" Grid.Row="3" Margin="2">
+            <Button  Background="DeepSkyBlue" Name="btnBarejar" Width="125" Click="btnBarejar_Click">Jugar</Button>
+        </Viewbox>
+    </Grid>
+</Window>
