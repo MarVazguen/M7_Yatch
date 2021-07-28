@@ -1,4 +1,4 @@
-# M7_Yatch
+# Game_Yatch
 
 
 Graphical interface of my game
