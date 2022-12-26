@@ -1,5 +1,5 @@
 # Game_Yatch
-Este proyecto consiste en un juego de Yatch en WPF (Windows Presentation Foundation) desarrollado en C#.
+### Este proyecto consiste en un juego de Yatch en WPF (Windows Presentation Foundation) desarrollado en C#.
 
 Graphical interface of my game
 
